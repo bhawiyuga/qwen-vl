@@ -2,41 +2,71 @@
 
 This repository contains materials for learning and experimenting with the Qwen2.5-VL model, a powerful vision-language model that can process both text and images.
 
-## Setup
+## Directory Structure
 
-The environment is set up using `uv`, a fast Python package installer and virtual environment manager.
-
-1. The virtual environment has already been created in `.venv` directory
-2. Required packages have been installed:
-   - torch
-   - transformers
-   - jupyter
-   - pillow
-   - accelerate
-   - qwen-vl-utils (official package)
-
-## Files
-
-- `qwen_vl_tutorial.py`: A comprehensive Python script that guides you through using the Qwen2.5-VL model
-- `qwen-inference.py`: Reference script for Qwen VLM inference
-- `requirements.txt`: List of dependencies for the project
+```
+qwen-vl/
+├── .venv/                  # Virtual environment directory
+├── qwen_vl_tutorial.py     # Main tutorial script for Qwen VLM
+├── qwen_vl_tutorial.ipynb  # Jupyter notebook version of the tutorial
+├── qwen_vl_mlx.ipynb       # MLX-specific notebook for Qwen VLM
+├── qwen-inference.py       # Reference script for Qwen VLM inference
+├── pyproject.toml          # Project configuration for uv
+├── requirements.txt        # Legacy package requirements
+└── uv.lock                 # Lock file for uv dependencies
+```
 
 ## Getting Started
 
-1. Activate the virtual environment:
+### Prerequisites
+
+1. Install uv - the fast Python package installer and virtual environment manager:
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
+   
+   Or with pip:
+   ```bash
+   pip install uv
+   ```
+
+### Setup
+
+1. Create a virtual environment using uv:
+   ```bash
+   uv venv
+   ```
+
+2. Activate the virtual environment:
+   ```bash
    source .venv/bin/activate
    ```
 
-2. Run the tutorial script:
+3. Install all required dependencies using uv sync:
+   ```bash
+   uv sync
    ```
+   
+   This will install all dependencies specified in the pyproject.toml file, including:
+   - torch and torchvision
+   - transformers
+   - matplotlib
+   - ipykernel and ipywidgets
+   - mlx-vlm (from GitHub repository)
+
+### Running the Tutorial
+
+1. Run the tutorial script:
+   ```bash
    python qwen_vl_tutorial.py
    ```
 
-3. For interactive exploration, start Jupyter notebook:
-   ```
+2. For interactive exploration, start Jupyter notebook:
+   ```bash
    jupyter notebook
    ```
+   
+   Then open either `qwen_vl_tutorial.ipynb` or `qwen_vl_mlx.ipynb`.
 
 ## Tutorial Contents
 
@@ -64,3 +94,4 @@ The tutorial uses the `Qwen/Qwen2.5-VL-3B-Instruct` model, which is a 3B paramet
 
 - [Qwen2.5 GitHub Repository](https://github.com/QwenLM/Qwen2.5)
 - [Hugging Face Model Card](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct)
+- [uv Documentation](https://github.com/astral-sh/uv)
